@@ -1,0 +1,344 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f8f9fc;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ============ 自定义滚动条 ============ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* ============ 消息动画 ============ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-enter {
+  animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============ 步骤详情展开动画 ============ */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+    transform: translateY(0);
+  }
+}
+
+.step-detail-enter {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* ============ 步骤运行中脉冲 ============ */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.step-running {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+/* ============ 打字光标闪烁 ============ */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 0.8s infinite;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* ============ 思考中的点点动画 ============ */
+.dot-pulse {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #1677ff;
+  animation: dotPulse 1.5s infinite linear;
+}
+
+.dot-pulse::before,
+.dot-pulse::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #1677ff;
+}
+
+.dot-pulse::before {
+  left: -14px;
+  animation: dotPulseBefore 1.5s infinite linear;
+}
+
+.dot-pulse::after {
+  left: 14px;
+  animation: dotPulseAfter 1.5s infinite linear;
+}
+
+@keyframes dotPulseBefore {
+  0% { opacity: 0.4; transform: scale(0.8); }
+  25% { opacity: 1; transform: scale(1); }
+  50%, 100% { opacity: 0.4; transform: scale(0.8); }
+}
+
+@keyframes dotPulse {
+  0%, 25% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1); }
+  75%, 100% { opacity: 0.4; transform: scale(0.8); }
+}
+
+@keyframes dotPulseAfter {
+  0%, 50% { opacity: 0.4; transform: scale(0.8); }
+  75% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ============ Hero图标呼吸动画 ============ */
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 8px 24px rgba(22, 119, 255, 0.25); }
+  50% { box-shadow: 0 12px 32px rgba(22, 119, 255, 0.35); }
+}
+
+.hero-icon {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+/* ============ 新建对话按钮悬停 ============ */
+.new-chat-btn:hover {
+  background: #e6f4ff !important;
+  border-color: #1677ff !important;
+}
+
+/* ============ 建议卡片悬停 ============ */
+.suggestion-card:hover {
+  transform: translateY(-1px);
+}
+
+/* ============ Markdown样式 ============ */
+.markdown-content {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.markdown-content h1 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+.markdown-content h2 {
+  font-size: 17px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.markdown-content h3 {
+  font-size: 15px;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.markdown-content p {
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+.markdown-content ul, .markdown-content ol {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.markdown-content li {
+  margin-bottom: 4px;
+  line-height: 1.7;
+}
+
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 13px;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.markdown-content table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.markdown-content table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.markdown-content table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+.markdown-content table tbody tr:hover {
+  background: #f8f9fc;
+}
+
+.markdown-content table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown-content code {
+  background: #f0f5ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #1677ff;
+  font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+.markdown-content pre {
+  background: #1a1a2e;
+  color: #a8e6cf;
+  padding: 14px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 10px 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.markdown-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.markdown-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.markdown-content th, .markdown-content td {
+  border: 1px solid #e8e8e8;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-content th {
+  background: #f0f5ff;
+  font-weight: 600;
+  color: #333;
+}
+
+.markdown-content tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid #1677ff;
+  padding: 8px 16px;
+  margin: 10px 0;
+  background: #f8f9ff;
+  color: #555;
+  border-radius: 0 8px 8px 0;
+}
+
+.markdown-content strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.markdown-content hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 16px 0;
+}
+
+/* ============ Timeline Steps ============ */
+.steps-timeline .ant-timeline-item-content {
+  padding-bottom: 4px !important;
+}
+
+.steps-timeline .ant-timeline-item {
+  padding-bottom: 8px !important;
+}
+
+/* ============ Ant Design覆盖 ============ */
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  padding: 8px 12px !important;
+}
+
+.ant-card-small > .ant-card-body {
+  padding: 12px !important;
+}
+
+/* 输入框获得焦点时的高亮效果 */
+.ant-input:focus, .ant-input-focused {
+  box-shadow: none !important;
+}
+
+/* 平滑过渡 */
+.ant-layout-sider,
+.ant-menu-item,
+.ant-btn,
+.ant-tag,
+.ant-card {
+  transition: all 0.2s ease !important;
+}

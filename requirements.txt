@@ -1,0 +1,32 @@
+# ============================================================
+# 2026泰迪杯B题 - 上市公司财报"智能问数"助手
+# Python依赖包
+# ============================================================
+
+# --- 核心依赖 ---
+openai>=1.0.0
+pdfplumber>=0.10.0
+openpyxl>=3.1.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# --- 嵌入模型 ---
+sentence-transformers>=2.2.0
+torch>=2.0.0
+
+# --- 可视化 ---
+matplotlib>=3.7.0
+
+# --- Web后端 ---
+fastapi>=0.100.0
+uvicorn[standard]>=0.22.0
+python-multipart>=0.0.6
+pydantic>=2.0.0
+
+# --- 工具库 ---
+aiofiles>=23.0.0
+python-dotenv>=1.0.0
+loguru>=0.7.0
+
+# --- 前端构建 (可选) ---
+# Node.js 18+ (前端使用 React + Ant Design)
