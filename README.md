@@ -58,30 +58,7 @@ snapshot_download('BAAI/bge-small-zh-v1.5', local_dir='./models/bge-small-zh-v1.
 "
 ```
 
-### 2. 配置大模型API
 
- `config.json` 配置文件。您需要修改其中的API密钥：
-
-```json
-{
-  "llm_configs": [
-    {
-      "name": "硅基流动-DeepSeek-V3",
-      "base_url": "https://api.siliconflow.cn/v1/",
-      "api_key": "sk-07909180c72d486d9545dfd060a06029",
-      "model": "Pro/deepseek-ai/DeepSeek-V3",
-      "enabled": true
-    },
-    {
-      "name": "智谱-GLM-4-Flash",
-      "base_url": "https://open.bigmodel.cn/api/paas/v4/",
-      "api_key": "4b7d58b9e9494ae6b37021c9601e3ca7.sWjwSwjCQUCx3MhJ",
-      "model": "glm-4-flash",
-      "enabled": true
-    }
-  ]
-}
-```
 
 #### API申请方式
 
